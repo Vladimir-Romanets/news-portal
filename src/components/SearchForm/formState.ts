@@ -1,4 +1,4 @@
-import type { NewsCategory, NewsSourceId } from "@/types/query.type"
+import type { NewsCategory, NewsSourceId, SortOrder } from "@/types/query.type"
 
 export interface SearchState {
   query: string
@@ -6,6 +6,7 @@ export interface SearchState {
   toDate: string
   category: NewsCategory[]
   source: NewsSourceId[]
+  sortBy?: SortOrder
 }
 
 export type SearchAction =
@@ -14,6 +15,7 @@ export type SearchAction =
   | { type: "SET_TO_DATE"; payload: string }
   | { type: "SET_CATEGORY"; payload: NewsCategory[] }
   | { type: "TOGGLE_SOURCE"; payload: NewsSourceId }
+  | { type: "SET_SORT_BY"; payload: SortOrder }
   | { type: "RESET_FILTERS" }
 
 export const initialState: SearchState = {
@@ -22,6 +24,7 @@ export const initialState: SearchState = {
   toDate: "",
   category: ["general"],
   source: ["guardian", "newsapi", "nyt"],
+  sortBy: "newest",
 }
 
 export const searchReducer = (
@@ -46,6 +49,8 @@ export const searchReducer = (
           : [...state.source, action.payload],
       }
     }
+    case "SET_SORT_BY":
+      return { ...state, sortBy: action.payload }
     case "RESET_FILTERS":
       return initialState
     default:
@@ -67,4 +72,10 @@ export const SOURCE_OPTIONS: { id: NewsSourceId; label: string }[] = [
   { id: "newsapi", label: "NewsAPI" },
   { id: "guardian", label: "The Guardian" },
   { id: "nyt", label: "NYTimes" },
+]
+
+export const SORT_OPTIONS: { value: SortOrder; label: string }[] = [
+  { value: "newest", label: "Newest" },
+  { value: "oldest", label: "Oldest" },
+  { value: "relevance", label: "Relevance" },
 ]
