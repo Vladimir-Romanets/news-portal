@@ -22,3 +22,7 @@ export interface ArticleQueryParams {
   page?: number
   pageSize?: number
 }
+
+export interface ExtendedArticleQueryParams extends ArticleQueryParams {
+  signal?: AbortSignal
+}

@@ -1,0 +1,35 @@
+.errorState {
+  background-color: #fef2f2;
+  border: 1px solid #f87171;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 24px;
+}
+
+.title {
+  color: #b91c1c;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  font-family: var(--sans);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.item {
+  color: #991b1b;
+  font-size: 14px;
+  font-family: var(--sans);
+}
+
+.source {
+  font-weight: 600;
+  text-transform: capitalize;
+}

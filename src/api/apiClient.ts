@@ -1,21 +1,31 @@
 import type { Article } from "@/types/article.type"
-import type { ArticleQueryParams, NewsSourceId } from "@/types/query.type"
+import type {
+  ExtendedArticleQueryParams,
+  NewsSourceId,
+} from "@/types/query.type"
 import { fetchGuardianApi } from "./guardian"
 import { fetchNewsApi } from "./newsApi"
 import { fetchNYTApi } from "./nyt"
 
 type Errors = { source: NewsSourceId; error: string }
 
+export type NewsReturning = {
+  articles: Article[]
+  errors: Errors[]
+}
+
 const sourceFetchers: Record<
   NewsSourceId,
-  (params: ArticleQueryParams) => Promise<Article[]>
+  (params: ExtendedArticleQueryParams) => Promise<Article[]>
 > = {
   guardian: fetchGuardianApi,
   newsapi: fetchNewsApi,
   nyt: fetchNYTApi,
 }
 
-export const apiClient = async (params: ArticleQueryParams) => {
+export const apiClient = async (
+  params: ExtendedArticleQueryParams,
+): Promise<NewsReturning> => {
   const selectedSources: NewsSourceId[] = params.source
     ? Array.isArray(params.source)
       ? params.source
@@ -40,15 +50,17 @@ export const apiClient = async (params: ArticleQueryParams) => {
     if (result.status === "fulfilled") {
       articles.push(...result.value.data)
     } else {
-      // TODO: for production better to adjust logger
-      console.error(`Failed to fetch from ${sourceId}:`, result.reason)
-      errors.push({
-        source: sourceId,
-        error:
-          result.reason instanceof Error
-            ? result.reason.message
-            : "Unknown error",
-      })
+      const error = result.reason
+      const isAbortError = error instanceof Error && error.name === "AbortError"
+
+      if (!isAbortError) {
+        // TODO: for production better to adjust logger
+        console.error(`Failed to fetch from ${sourceId}:`, error)
+        errors.push({
+          source: sourceId,
+          error: error instanceof Error ? error.message : "Unknown error",
+        })
+      }
     }
   })
 
