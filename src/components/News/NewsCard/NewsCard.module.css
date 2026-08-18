@@ -40,13 +40,6 @@
 }
 
 .category {
-  align-self: flex-start;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--color-text-secondary, #4b5563);
-  background-color: var(--color-bg-secondary, #f3f4f6);
-  padding: 4px 8px;
-  border-radius: 4px;
   margin-bottom: 12px;
 }
 
@@ -87,6 +80,7 @@
 .footer {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 8px;
   font-size: 0.75rem;
   color: var(--color-text-tertiary, #6b7280);
@@ -98,6 +92,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
+  width: 100%;
 }
 
 .sourceLogo {
@@ -114,6 +109,7 @@
 }
 
 .sourceName {
+  flex-grow: 1;
   font-weight: 600;
   color: var(--color-text-primary, #111827);
 }
@@ -122,11 +118,18 @@
   color: var(--color-text-tertiary, #d1d5db);
 }
 
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
 .author {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 100px;
 }
 
 .date {

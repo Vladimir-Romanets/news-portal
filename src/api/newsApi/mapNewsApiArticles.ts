@@ -11,7 +11,7 @@ export const mapNewsApiArticles = (data: NewsApiResponse): Article[] => {
       title: item.title,
       description: item.description || "",
       url: item.url,
-      imageUrl: item.urlToImage || null,
+      imageUrl: item.urlToImage?.startsWith("http") ? item.urlToImage : null,
       publishedAt: item.publishedAt,
       source: {
         id: "newsapi",

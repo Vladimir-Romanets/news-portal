@@ -1,6 +1,8 @@
 import classNames from "classnames"
 import type { Article } from "@/types/article.type"
+import { Badge } from "@/components/common"
 import styles from "./NewsCard.module.css"
+import { dateFormatter } from "@/utils/dateFormatter"
 
 interface NewsCardProps {
   article: Article
@@ -21,20 +23,21 @@ export const NewsCard = ({ article, className }: NewsCardProps) => {
 
   return (
     <article className={classNames(styles.card, className)}>
-      {imageUrl && (
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.imageLink}
-        >
-          <img src={imageUrl} alt={title} className={styles.image} />
-        </a>
-      )}
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.imageLink}
+      >
+        <img
+          src={imageUrl || "/placeholder.webp"}
+          alt={title}
+          className={styles.image}
+          loading="lazy"
+        />
+      </a>
       <div className={styles.content}>
-        {category && (
-          <span className={styles.category}>{category.toUpperCase()}</span>
-        )}
+        {category && <Badge className={styles.category} text={category} />}
 
         <a
           href={url}
@@ -53,15 +56,17 @@ export const NewsCard = ({ article, className }: NewsCardProps) => {
             <span className={styles.sourceName}>{source.name}</span>
           </div>
 
-          {author && (
-            <>
-              <span className={styles.separator}>•</span>
-              <span className={styles.author}>{author}</span>
-            </>
-          )}
-
-          <span className={styles.separator}>•</span>
-          <span className={styles.date}>{publishedAt}</span>
+          <div className={styles.meta}>
+            {author && (
+              <>
+                <span className={styles.author}>{author}</span>
+                <span className={styles.separator}>•</span>
+              </>
+            )}
+            <time dateTime={publishedAt} className={styles.date}>
+              {dateFormatter(publishedAt)}
+            </time>
+          </div>
         </div>
       </div>
     </article>
