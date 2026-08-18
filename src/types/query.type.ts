@@ -13,7 +13,7 @@ export type SortOrder = "newest" | "oldest" | "relevance"
 
 export interface ArticleQueryParams {
   query?: string
-  category?: NewsCategory
+  category?: NewsCategory | NewsCategory[]
   source?: NewsSourceId | NewsSourceId[]
   author?: string
   fromDate?: string

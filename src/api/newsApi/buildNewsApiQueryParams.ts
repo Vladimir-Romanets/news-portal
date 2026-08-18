@@ -20,7 +20,13 @@ export const buildNewsApiQueryParams = (
 
   const searchQuery = combineQueryWithAuthor(params.query, params.author)
 
-  query["q"] = searchQuery || (params.category ? params.category : "news")
+  let categoryQuery = ""
+  if (params.category) {
+    const categories = Array.isArray(params.category) ? params.category : [params.category]
+    categoryQuery = categories.join(" OR ")
+  }
+
+  query["q"] = searchQuery || categoryQuery || "news"
 
   if (params.fromDate) {
     query["from"] = params.fromDate

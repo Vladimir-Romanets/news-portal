@@ -19,15 +19,10 @@
 
 .input {
   width: 100%;
-  padding: 10px 36px 10px 14px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--bg);
-  color: var(--text-h);
+  min-width: 0;
+  padding: 10px 32px 10px 10px;
   font-family: inherit;
-  font-size: 15px;
-  transition: all 0.2s ease;
-  box-sizing: border-box;
+  font-size: 14px;
 }
 
 /* Hide native date picker icon for webkit */
@@ -40,15 +35,11 @@
   cursor: pointer;
 }
 
-.input:focus {
-  outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-}
+
 
 .icon {
   position: absolute;
-  right: 12px;
+  right: 6px;
   display: flex;
   align-items: center;
   justify-content: center;

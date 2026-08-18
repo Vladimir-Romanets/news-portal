@@ -2,28 +2,30 @@ import React, { useState, useRef, useEffect } from 'react';
 import cn from 'classnames';
 import styles from "./Select.module.css";
 
-export interface Option {
-  value: string;
+export interface Option<T extends string = string> {
+  value: T;
   label: string;
 }
 
-export interface SelectProps {
+export interface SelectProps<T extends string = string> {
   label?: string;
-  options: Option[];
-  value: string[];
-  onChange: (value: string[]) => void;
+  options: Option<T>[];
+  value: T[];
+  onChange: (value: T[]) => void;
   placeholder?: string;
   className?: string;
+  name: string;
 }
 
-export const Select: React.FC<SelectProps> = ({
+export const Select = <T extends string = string>({
   label,
   options,
   value,
   onChange,
   placeholder = 'Select...',
   className = '',
-}) => {
+  name,
+}: SelectProps<T>) => {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -40,7 +42,7 @@ export const Select: React.FC<SelectProps> = ({
 
   const handleToggle = () => setIsOpen(!isOpen);
 
-  const handleSelect = (optionValue: string) => {
+  const handleSelect = (optionValue: T) => {
     if (value.includes(optionValue)) {
       onChange(value.filter((v) => v !== optionValue));
     } else {
@@ -48,7 +50,7 @@ export const Select: React.FC<SelectProps> = ({
     }
   };
 
-  const handleRemove = (e: React.MouseEvent, optionValue: string) => {
+  const handleRemove = (e: React.MouseEvent, optionValue: T) => {
     e.stopPropagation();
     onChange(value.filter((v) => v !== optionValue));
   };
@@ -57,9 +59,10 @@ export const Select: React.FC<SelectProps> = ({
 
   return (
     <div className={cn(styles.wrapper, className)} ref={containerRef}>
-      {label && <label className={styles.label}>{label}</label>}
+      {label && <label htmlFor={name} className={styles.label}>{label}</label>}
       <div
-        className={cn(styles.selectContainer, { [styles.isOpen]: isOpen })}
+        id={name}
+        className={cn("form-control", styles.selectContainer, { "form-control-focus": isOpen })}
         onClick={handleToggle}
       >
         <div className={styles.pillsContainer}>

@@ -34,8 +34,8 @@
 }
 
 .checkbox:checked + .customCheckbox {
-  background: #1d4ed8;
-  border-color: #1d4ed8;
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
 .checkbox:checked + .customCheckbox svg {

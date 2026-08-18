@@ -4,10 +4,12 @@ import styles from "./Input.module.css"
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string
+  name: string
 }
 
 export const Input = ({
   label,
+  name,
   className = "",
   ref,
   ...props
@@ -16,10 +18,12 @@ export const Input = ({
     | React.RefObject<HTMLInputElement | null>
     | React.RefCallback<HTMLInputElement | null>
 }) => {
+  const inputId = props.id || name
+
   return (
     <div className={cn(styles.wrapper, className)}>
-      {label && <label className={styles.label}>{label}</label>}
-      <input className={styles.input} ref={ref} {...props} />
+      {label && <label htmlFor={inputId} className={styles.label}>{label}</label>}
+      <input id={inputId} name={name} className={cn("form-control", styles.input)} ref={ref} {...props} />
     </div>
   )
 }
