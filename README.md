@@ -33,7 +33,11 @@ A modern, mobile-responsive news aggregation platform that empowers users to dis
 
 ## Environment Variables
 
-*Environment variables will be added later.*
+To run this project, you will need to add the following environment variables to your `.env.local` file. You can copy `.env.example` to `.env.local` and fill in your keys:
+
+- `VITE_NEWSAPI_API_KEY` - API key for [NewsAPI](https://newsapi.org/)
+- `VITE_GUARDIAN_API_KEY` - API key for [The Guardian Open Platform](https://open-platform.theguardian.com/)
+- `VITE_NYT_API_KEY` - API key for [The New York Times Developer Network](https://developer.nytimes.com/)
 
 ---
 
@@ -76,6 +80,18 @@ pnpm prod:docker
 ```
 
 The application will be accessible at [http://localhost:8080](http://localhost:8080).
+
+---
+
+## Troubleshooting
+
+### Docker doesn't see new dependencies (npm/pnpm)
+If you installed a new library (e.g., `pnpm install <package>`), but the Docker container throws a module not found error, this happens because the `node_modules` directory is cached inside Docker's anonymous volumes.
+To fix this issue, rebuild the container and remove the old volumes:
+
+```bash
+docker compose up -d --build -V frontend-dev
+```
 
 ---
 
