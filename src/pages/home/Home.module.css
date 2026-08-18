@@ -1,0 +1,25 @@
+.homeLayout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.mainContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  flex: 1;
+  position: relative;
+  align-items: flex-start;
+}
+
+@media (min-width: 1024px) {
+  .mainContainer {
+    grid-template-columns: 280px 1fr;
+    gap: 24px;
+  }
+}
+
+.mainContent {
+  padding: 24px 0;
+  min-width: 0;
+}
