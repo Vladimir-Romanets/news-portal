@@ -1,4 +1,5 @@
 import type { Article } from "@/types/article.type"
+import { sortingHandler } from "@/utils/sortingHandler"
 import type {
   ExtendedArticleQueryParams,
   NewsSourceId,
@@ -63,6 +64,12 @@ export const apiClient = async (
       }
     }
   })
+
+  if (params.sortBy === "newest") {
+    articles.sort(sortingHandler)
+  } else if (params.sortBy === "oldest") {
+    articles.sort((a, b) => sortingHandler(b, a))
+  }
 
   return { articles, errors }
 }

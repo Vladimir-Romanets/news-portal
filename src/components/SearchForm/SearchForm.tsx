@@ -6,6 +6,7 @@ import {
   initialState,
   CATEGORY_OPTIONS,
   SOURCE_OPTIONS,
+  SORT_OPTIONS,
 } from "./formState"
 import styles from "./SearchForm.module.css"
 import { useDebounce } from "@/hooks/useDebounce"
@@ -22,6 +23,7 @@ export const SearchForm = () => {
     state.source,
     state.fromDate,
     state.toDate,
+    state.sortBy,
     debouncedQuery,
   ])
 
@@ -73,6 +75,20 @@ export const SearchForm = () => {
             dispatch({ type: "SET_CATEGORY", payload: val as any })
           }}
           placeholder="Select..."
+        />
+      </div>
+
+      <div className={styles.formGroup}>
+        <Select
+          label="Sort By"
+          name="sortBy"
+          options={SORT_OPTIONS}
+          value={state.sortBy ? [state.sortBy] : []}
+          onChange={(val) => {
+            const newValue = val.filter(v => v !== state.sortBy)[0] || state.sortBy || "newest";
+            dispatch({ type: "SET_SORT_BY", payload: newValue as any })
+          }}
+          placeholder="Select sort order..."
         />
       </div>
 
