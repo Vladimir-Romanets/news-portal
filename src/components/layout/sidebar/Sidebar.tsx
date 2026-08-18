@@ -1,4 +1,5 @@
 import cn from "classnames"
+import { SearchForm } from "@/components/SearchForm/SearchForm"
 import styles from "./Sidebar.module.css"
 
 interface SidebarProps {
@@ -32,7 +33,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
         </svg>
       </label>
       <aside className={cn(styles.sidebar, className)}>
-        {/* Filter and user's feed will be added here */}
+        <SearchForm />
       </aside>
     </>
   )

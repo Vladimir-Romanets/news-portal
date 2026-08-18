@@ -19,18 +19,8 @@
   width: 100%;
   min-height: 42px;
   padding: 6px 36px 6px 10px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--bg);
   cursor: pointer;
   position: relative;
-  box-sizing: border-box;
-  transition: all 0.2s ease;
-}
-
-.selectContainer.isOpen {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .pillsContainer {
@@ -132,8 +122,8 @@
 }
 
 .selectedOption .checkbox {
-  background: #1d4ed8;
-  border-color: #1d4ed8;
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
 .checkbox svg {

@@ -1,9 +1,9 @@
-import { createContext, useState, type ReactNode } from "react"
+import { createContext, useState, type ReactNode, type Dispatch, type SetStateAction } from "react"
 import type { ArticleQueryParams } from "@/types/query.type"
 
 interface ArticleQueryContextValue {
   params: ArticleQueryParams
-  setParams: (params: ArticleQueryParams) => void
+  setParams: Dispatch<SetStateAction<ArticleQueryParams>>
 }
 
 export const ArticleQueryContext =

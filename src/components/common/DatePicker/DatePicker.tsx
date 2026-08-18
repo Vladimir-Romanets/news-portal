@@ -7,10 +7,12 @@ export interface DatePickerProps extends Omit<
   "type"
 > {
   label?: string
+  name: string
 }
 
 export const DatePicker = ({
   label,
+  name,
   className = "",
   ref,
   ...props
@@ -19,11 +21,13 @@ export const DatePicker = ({
     | React.RefObject<HTMLInputElement | null>
     | React.RefCallback<HTMLInputElement | null>
 }) => {
+  const inputId = props.id || name
+
   return (
     <div className={cn(styles.wrapper, className)}>
-      {label && <label className={styles.label}>{label}</label>}
+      {label && <label htmlFor={inputId} className={styles.label}>{label}</label>}
       <div className={styles.inputContainer}>
-        <input type="date" className={styles.input} ref={ref} {...props} />
+        <input id={inputId} name={name} type="date" className={cn("form-control", styles.input)} ref={ref} {...props} />
         <span className={styles.icon}>
           <svg
             width="16"

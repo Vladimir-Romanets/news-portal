@@ -39,7 +39,8 @@ export const buildGuardianQueryParams = (
   }
 
   if (params.category) {
-    query["section"] = GUARDIAN_CATEGORY_MAP[params.category]
+    const categories = Array.isArray(params.category) ? params.category : [params.category]
+    query["section"] = categories.map((c) => GUARDIAN_CATEGORY_MAP[c]).join("|")
   }
 
   if (params.fromDate) {

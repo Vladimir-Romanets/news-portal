@@ -16,6 +16,7 @@
 
 @media (min-width: 1024px) {
   .sidebar {
+    padding-left: 0;
     width: 280px;
     height: calc(100vh - 75px);
     position: sticky;

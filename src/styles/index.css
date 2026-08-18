@@ -8,6 +8,8 @@
   --accent-bg: rgba(29, 78, 216, 0.1);
   --accent-border: rgba(29, 78, 216, 0.5);
   --social-bg: rgba(243, 244, 246, 0.5);
+  --primary: #3b82f6;
+  --primary-ring: rgba(59, 130, 246, 0.1);
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
@@ -40,4 +42,19 @@ body {
 
 *{
   box-sizing: border-box;
+}
+/* Common form element styles */
+.form-control {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text-h);
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.form-control:focus, .form-control-focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-ring);
 }
