@@ -1,0 +1,1 @@
+export { fetchNYTApi } from "./fetchNYTApi"

@@ -1,1 +1,0 @@
-export { fetchNewsApi } from "./fetchNewsApi"

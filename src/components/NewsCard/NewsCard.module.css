@@ -1,0 +1,134 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-primary, #ffffff);
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.imageLink {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.imageLink:hover .image {
+  transform: scale(1.05);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 16px;
+}
+
+.category {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-secondary, #4b5563);
+  background-color: var(--color-bg-secondary, #f3f4f6);
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.titleLink {
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: var(--color-text-primary, #111827);
+}
+
+.titleLink:hover .title {
+  color: var(--color-primary, #2563eb);
+}
+
+.description {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary, #4b5563);
+  margin: 0 0 16px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: var(--color-text-tertiary, #6b7280);
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.sourceInfo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sourceLogo {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--color-primary, #2563eb);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.65rem;
+}
+
+.sourceName {
+  font-weight: 600;
+  color: var(--color-text-primary, #111827);
+}
+
+.separator {
+  color: var(--color-text-tertiary, #d1d5db);
+}
+
+.author {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+}
+
+.date {
+  white-space: nowrap;
+}
