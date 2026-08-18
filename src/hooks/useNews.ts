@@ -1,6 +1,7 @@
 import { startTransition, useActionState, useEffect, useRef } from "react"
 import { apiClient, type NewsReturning } from "@/api/apiClient"
 import type { ExtendedArticleQueryParams } from "@/types/query.type"
+import { useArticleQuery } from "./useArticleQuery"
 
 const initialState = {
   articles: [],
@@ -8,6 +9,8 @@ const initialState = {
 }
 export const useNews = () => {
   const abortHolder = useRef<AbortController | null>(null)
+
+  const { params } = useArticleQuery()
 
   const [state, runAction, isLoading] = useActionState(
     (_: NewsReturning, payload: ExtendedArticleQueryParams) =>
@@ -22,9 +25,9 @@ export const useNews = () => {
     abortHolder.current = new AbortController()
 
     startTransition(() =>
-      runAction({ category: "general", signal: abortHolder.current?.signal }),
+      runAction({ ...params, signal: abortHolder.current?.signal }),
     )
-  }, [])
+  }, [params])
 
   return {
     isLoading,
