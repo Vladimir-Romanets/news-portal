@@ -27,14 +27,29 @@ A modern, mobile-responsive news aggregation platform that empowers users to dis
 
 ## Architecture & Folder Structure
 
-*To be defined.*
+```text
+src/
+├── api/          # Services for fetching data from external news APIs
+├── components/   # Reusable UI components
+├── constants/    # Configuration constants and static data
+├── context/      # Global state management using React Context
+├── hooks/        # Custom React hooks
+├── pages/        # Main views and route components
+├── styles/       # Global styles and design tokens
+├── types/        # TypeScript interface and type definitions
+└── utils/        # Helper functions and utilities
+```
 
 ---
 
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your `.env.local` file. You can copy `.env.example` to `.env.local` and fill in your keys:
+To run this project, you will need to configure environment variables. You can copy `.env.example` as a template and fill in your keys:
 
+- For **local development**, create a `.env.local` file.
+- For **production**, create a `.env.production` file.
+
+Required variables:
 - `VITE_NEWSAPI_API_KEY` - API key for [NewsAPI](https://newsapi.org/)
 - `VITE_GUARDIAN_API_KEY` - API key for [The Guardian Open Platform](https://open-platform.theguardian.com/)
 - `VITE_NYT_API_KEY` - API key for [The New York Times Developer Network](https://developer.nytimes.com/)
@@ -97,7 +112,53 @@ docker compose up -d --build -V frontend-dev
 
 ## Code Conventions
 
-*To be defined.*
+This project follows strict guidelines to maintain code quality and consistency.
+
+### General & Formatting
+
+- **Language**: TypeScript with React (`.tsx` / `.ts`).
+- **Formatter**: [Prettier](https://prettier.io/) — semicolons are disabled (`"semi": false`), all other options use Prettier defaults.
+- **Linter**: [oxlint](https://oxc.rs/docs/guide/usage/linter) with `react`, `typescript`, and `oxc` plugins enabled.
+  - `react/rules-of-hooks` — **error**
+  - `react/only-export-components` — **warn** (constant exports allowed)
+- **TypeScript strictness** (via `tsconfig.app.json`):
+  - `noUnusedLocals` and `noUnusedParameters` — all declared variables and params must be used.
+  - `noFallthroughCasesInSwitch` — switch cases must have explicit break/return.
+  - `verbatimModuleSyntax` — type-only imports must use `import type`.
+
+### Path Aliases
+
+- Use the `@/` alias to import from `src/` instead of relative paths (e.g., `import { Button } from "@/components/common"`).
+
+### Components
+
+- **Structure**: Each component lives in its own directory named after the component (PascalCase), containing:
+  - `ComponentName.tsx` — component logic
+  - `ComponentName.module.css` — scoped styles
+- **Definition**: Components are written as **named arrow function exports** (e.g., `export const Input = (...) => { ... }`).
+- **Props**: Props are typed using `interface`, extending native HTML attributes when appropriate (e.g., `interface InputProps extends InputHTMLAttributes<HTMLInputElement>`).
+- **Barrel exports**: Each component group exposes a public API via an `index.ts` barrel file.
+
+### Styling
+
+- **CSS Modules**: All component styles use CSS Modules (`.module.css`) to ensure local scope and avoid class name collisions.
+- **Class merging**: The `classnames` library (aliased as `cn`) is used to conditionally combine class names.
+
+### Naming Conventions
+
+- **Variables & functions**: `camelCase` (e.g., `newsItems`, `handleSubmit`).
+- **React components**: `PascalCase` (e.g., `NewsCard`, `Input`).
+- **Component directories**: `PascalCase` to match the component name (e.g., `src/components/common/Input/`).
+- **Non-component directories**: `camelCase` (e.g., `src/hooks/`, `src/utils/`).
+- **Files**: match the primary export — `PascalCase` for components (`Input.tsx`), `camelCase` for hooks and utilities (`useSearch.ts`).
+- **CSS Module classes**: `camelCase` (e.g., `styles.wrapper`, `styles.inputLabel`).
+- **TypeScript interfaces**: `PascalCase` with descriptive names (e.g., `InputProps`, `NewsArticle`).
+- **Constants**: `UPPER_SNAKE_CASE` for truly static values (e.g., `API_BASE_URL`).
+- **Environment variables**: `SCREAMING_SNAKE_CASE` prefixed with `VITE_` (e.g., `VITE_NEWSAPI_API_KEY`).
+
+### Package Manager
+
+- **pnpm** is the required package manager for this project.
 
 [react-badge]: https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB
 [react-url]: https://react.dev
