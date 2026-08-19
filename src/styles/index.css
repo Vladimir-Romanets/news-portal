@@ -36,6 +36,12 @@
   --color-separator: #d1d5db;
   --bg-rgb: 255, 255, 255;
 
+  /* Error State colors */
+  --color-error-bg: #fef2f2;
+  --color-error-border: #f87171;
+  --color-error-text: #b91c1c;
+  --color-error-text-secondary: #991b1b;
+
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
   color-scheme: light;
