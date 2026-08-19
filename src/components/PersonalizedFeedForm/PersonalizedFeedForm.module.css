@@ -1,0 +1,66 @@
+.personalizedFeedForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-right: 16px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+  margin-bottom: 4px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.groupLabel {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.sourcesList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sourceItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.authorInputGroup {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.authorInputGroup > div {
+  flex: 1;
+}
+
+.authorsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.authorItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.submitGroup {
+  margin-top: 8px;
+}

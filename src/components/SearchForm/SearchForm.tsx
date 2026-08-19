@@ -4,10 +4,8 @@ import { useArticleQuery } from "@/hooks/useArticleQuery"
 import {
   searchReducer,
   initialState,
-  CATEGORY_OPTIONS,
-  SOURCE_OPTIONS,
-  SORT_OPTIONS,
 } from "./formState"
+import { CATEGORY_OPTIONS, SOURCE_OPTIONS, SORT_OPTIONS } from "@/constants/formOptions"
 import styles from "./SearchForm.module.css"
 import { useDebounce } from "@/hooks/useDebounce"
 
