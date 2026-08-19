@@ -119,14 +119,10 @@
   border: 1.5px solid var(--border);
   border-radius: 4px;
   background: var(--bg);
+  color:var(--btn-primary-color)
 }
 
 .selectedOption .checkbox {
   background: var(--accent);
   border-color: var(--accent);
-}
-
-.checkbox svg {
-  width: 10px;
-  height: 10px;
 }
