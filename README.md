@@ -7,6 +7,10 @@
 
 A modern, mobile-responsive news aggregation platform that empowers users to discover and personalize content. Features advanced search across multiple parameters (keywords, date, category, source) and customizable news feeds tailored to preferred authors, topics, and publications.
 
+<p align="center">
+  <img src="public/logo.png" alt="News Portal Logo" width="320" />
+</p>
+
 ## Tech Stack
 
 - **Framework**: Vite
