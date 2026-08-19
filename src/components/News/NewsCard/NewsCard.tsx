@@ -1,4 +1,4 @@
-import classNames from "classnames"
+import cn from "classnames"
 import type { Article } from "@/types/article.type"
 import { Badge } from "@/components/common"
 import styles from "./NewsCard.module.css"
@@ -22,12 +22,13 @@ export const NewsCard = ({ article, className }: NewsCardProps) => {
   } = article
 
   return (
-    <article className={classNames(styles.card, className)}>
+    <article className={cn(styles.card, className)}>
       <a
         href={url}
         target="_blank"
         rel="noopener noreferrer"
         className={styles.imageLink}
+        aria-label={title}
       >
         <img
           src={imageUrl || "/placeholder.webp"}
@@ -44,8 +45,9 @@ export const NewsCard = ({ article, className }: NewsCardProps) => {
           target="_blank"
           rel="noopener noreferrer"
           className={styles.titleLink}
+          aria-label={title}
         >
-          <h3 className={styles.title}>{title}</h3>
+          <h2 className={styles.title}>{title}</h2>
         </a>
 
         <p className={styles.description}>{description}</p>
@@ -63,7 +65,10 @@ export const NewsCard = ({ article, className }: NewsCardProps) => {
                 <span className={styles.separator}>•</span>
               </>
             )}
-            <time dateTime={publishedAt} className={styles.date}>
+            <time
+              dateTime={publishedAt}
+              className={cn(styles.date, !author && styles.dateRight)}
+            >
               {dateFormatter(publishedAt)}
             </time>
           </div>

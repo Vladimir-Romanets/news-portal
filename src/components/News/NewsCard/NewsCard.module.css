@@ -134,3 +134,6 @@
 .date {
   white-space: nowrap;
 }
+.dateRight {
+  margin-left: auto;
+}
