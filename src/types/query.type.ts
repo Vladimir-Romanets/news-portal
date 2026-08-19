@@ -15,7 +15,7 @@ export interface ArticleQueryParams {
   query?: string
   category?: NewsCategory | NewsCategory[]
   source?: NewsSourceId | NewsSourceId[]
-  author?: string
+  author?: string | string[]
   fromDate?: string
   toDate?: string
   sortBy?: SortOrder

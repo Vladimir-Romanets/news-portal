@@ -43,8 +43,11 @@ export const buildNytQueryParams = (
       : [params.category]
     const nytSections = categories
       .map((c) => `"${NYT_CATEGORY_MAP[c]}"`)
-      .join(",")
-    query["fq"] = `desk:(${nytSections})`
+      .join(" ")
+    query["fq"] =
+      categories.length > 1
+        ? `desk:(${nytSections})`
+        : `desk:${params.category[0]}`
   }
 
   if (params.fromDate) {

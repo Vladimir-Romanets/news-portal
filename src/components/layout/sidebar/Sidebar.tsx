@@ -1,5 +1,7 @@
 import cn from "classnames"
+import { useState } from "react"
 import { SearchForm } from "@/components/SearchForm/SearchForm"
+import { PersonalizedFeedForm } from "@/components/PersonalizedFeedForm/PersonalizedFeedForm"
 import styles from "./Sidebar.module.css"
 
 interface SidebarProps {
@@ -7,6 +9,8 @@ interface SidebarProps {
 }
 
 export const Sidebar = ({ className }: SidebarProps) => {
+  const [activeTab, setActiveTab] = useState<"search" | "feed">("search")
+
   return (
     <>
       <input type="checkbox" id="sidebar-toggle" hidden />
@@ -33,7 +37,23 @@ export const Sidebar = ({ className }: SidebarProps) => {
         </svg>
       </label>
       <aside className={cn(styles.sidebar, className)}>
-        <SearchForm />
+        <div className={styles.tabs}>
+          <button
+            className={cn(styles.tab, { [styles.active]: activeTab === "search" })}
+            onClick={() => setActiveTab("search")}
+          >
+            Search
+          </button>
+          <button
+            className={cn(styles.tab, { [styles.active]: activeTab === "feed" })}
+            onClick={() => setActiveTab("feed")}
+          >
+            My Feed
+          </button>
+        </div>
+        <div className={styles.tabContent}>
+          {activeTab === "search" ? <SearchForm /> : <PersonalizedFeedForm />}
+        </div>
       </aside>
     </>
   )

@@ -15,6 +15,27 @@
 
   --sans: 'Roboto Flex', sans-serif;
 
+  /* Button variables */
+  --btn-primary-bg: #000;
+  --btn-primary-color: #fff;
+  --btn-primary-hover-bg: #333;
+  --btn-secondary-bg: #f5f5f5;
+  --btn-secondary-color: #1a1a1a;
+  --btn-secondary-hover-bg: #e5e5e5;
+  --btn-outline-border: #e5e5e5;
+  --btn-ghost-color: #666;
+
+  /* Global component colors */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f3f4f6;
+  --color-border: #e5e7eb;
+  --color-primary: #2563eb;
+  --color-text-primary: #111827;
+  --color-text-secondary: #4b5563;
+  --color-text-tertiary: #6b7280;
+  --color-separator: #d1d5db;
+  --bg-rgb: 255, 255, 255;
+
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
   color-scheme: light;
