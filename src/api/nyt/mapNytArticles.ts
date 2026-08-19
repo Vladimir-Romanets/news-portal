@@ -6,7 +6,10 @@ export const mapNytArticles = (data: NytResponse): Article[] => {
 
   return data.response.docs.map((item) => ({
     id: item._id,
-    title: item.headline?.main || item.abstract || "Untitled",
+    title:
+      (item.headline?.main || item.abstract)
+        ?.replace(/<[^>]*>?/gm, "")
+        .trim() || "Untitled",
     description: item.abstract || item.snippet || "",
     url: item.web_url,
     imageUrl:
