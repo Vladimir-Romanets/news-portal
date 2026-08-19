@@ -1,13 +1,13 @@
 .errorState {
-  background-color: #fef2f2;
-  border: 1px solid #f87171;
+  background-color: var(--color-error-bg);
+  border: 1px solid var(--color-error-border);
   border-radius: 8px;
   padding: 16px;
   margin-top: 24px;
 }
 
 .title {
-  color: #b91c1c;
+  color: var(--color-error-text);
   font-size: 16px;
   font-weight: 600;
   margin: 0 0 8px 0;
@@ -24,7 +24,7 @@
 }
 
 .item {
-  color: #991b1b;
+  color: var(--color-error-text-secondary);
   font-size: 14px;
   font-family: var(--sans);
 }
